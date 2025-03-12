@@ -1,0 +1,18 @@
+# Basis-Image
+FROM node:18-alpine
+
+# Arbeitsverzeichnis setzen
+WORKDIR /app
+
+# Abhängigkeiten installieren
+COPY package.json package-lock.json ./
+RUN npm install
+
+# Projektdateien kopieren
+COPY . .
+
+# Exponiere den Port 3000 für den Entwicklungsserver
+EXPOSE 3000
+
+# Starte den Entwicklungsserver
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"] 
