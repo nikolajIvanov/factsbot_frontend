@@ -1,13 +1,12 @@
 export interface Quelle {
   name: string;
   url: string;
-  vertrauensscore: number;
 }
 
 export interface Fakt {
   titel: string;
   belegt: boolean;
-  vertrauensbewertung: number;
+  erklaerung: string;
   quellen: Quelle[];
 }
 
@@ -62,19 +61,18 @@ export const dummyData: DummyData = {
       {
         "titel": "Die globale Durchschnittstemperatur ist seit 1880 um 1,2°C gestiegen.",
         "belegt": true,
-        "vertrauensbewertung": 95,
+        "erklaerung": "Diese Aussage wird durch wissenschaftliche Daten belegt. Mehrere unabhängige Forschungseinrichtungen haben die globale Temperaturentwicklung seit dem späten 19. Jahrhundert dokumentiert und kommen zu ähnlichen Ergebnissen.",
         "quellen": [
           {
             "name": "NASA Klimadaten",
-            "url": "https://climate.nasa.gov/evidence",
-            "vertrauensscore": 98
+            "url": "https://climate.nasa.gov/evidence"
           }
         ]
       },
       {
         "titel": "Der Amazonas-Regenwald produziert 20% des weltweiten Sauerstoffs.",
         "belegt": false,
-        "vertrauensbewertung": 50,
+        "erklaerung": "Für diese Behauptung konnten keine verlässlichen wissenschaftlichen Quellen gefunden werden. Aktuelle Forschungen deuten darauf hin, dass der Beitrag des Amazonas zur globalen Sauerstoffproduktion deutlich geringer ist und die meiste Sauerstoffproduktion durch Phytoplankton in den Ozeanen erfolgt.",
         "quellen": []
       }
     ],
