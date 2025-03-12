@@ -3,6 +3,7 @@ import UrlInput from './components/UrlInput'
 import AnalysisSteps from './components/AnalysisSteps'
 import TrustScore from './components/TrustScore'
 import FactsList from './components/FactsList'
+import SourceRating from './components/SourceRating'
 import NarrativeAnalysis from './components/NarrativeAnalysis'
 import EmotionalAnalysis from './components/EmotionalAnalysis'
 import { dummyData } from './data/dummyData'
@@ -56,8 +57,10 @@ function App() {
               <p className="text-muted-foreground mb-4">{data.analyse.zusammenfassung}</p>
               <AnalysisSteps steps={data.analyse.schritte} isAnalyzing={false} />
             </div>
-
+            
             <TrustScore score={data.analyse.vertrauensbewertung} />
+
+            <SourceRating rating={data.analyse.quellenbewertung} />
             
             <FactsList facts={data.analyse.fakten} />
             
