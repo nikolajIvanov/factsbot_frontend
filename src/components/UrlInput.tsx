@@ -16,33 +16,34 @@ const UrlInput = ({ onSubmit, disabled = false }: UrlInputProps) => {
   }
 
   return (
-    <div className="bg-card p-6 rounded-lg shadow">
-      <h2 className="text-xl font-semibold mb-4">Webseite analysieren</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label htmlFor="url" className="block text-sm font-medium mb-1">
-            URL eingeben
-          </label>
+    <form onSubmit={handleSubmit} className="w-full">
+      <div className="flex flex-col md:flex-row gap-4">
+        <div className="relative flex-grow">
           <input
             type="url"
-            id="url"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
-            placeholder="https://example.com"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+            placeholder="URL zur Analyse eingeben..."
+            className="w-full px-4 py-3 pr-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-lg"
             required
             disabled={disabled}
           />
+          <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
         </div>
         <button
           type="submit"
-          className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-8 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed text-lg font-medium"
           disabled={disabled}
         >
           {disabled ? 'Analysiere...' : 'Analysieren'}
         </button>
-      </form>
-    </div>
+      </div>
+    </form>
   )
 }
 
