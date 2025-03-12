@@ -14,6 +14,11 @@ function App() {
   const [showResults, setShowResults] = useState(false)
   const [data] = useState(dummyData)
 
+  // Berechne die Gesamtzahl der Quellen
+  const countQuellen = () => {
+    return data.analyse.fakten.reduce((sum, fakt) => sum + fakt.quellen.length, 0)
+  }
+
   const handleUrlSubmit = (submittedUrl: string) => {
     setUrl(submittedUrl)
     setIsAnalyzing(true)
@@ -26,7 +31,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <header className="border-b py-6">
         <div className="container mx-auto text-center">
           <h1 className="text-5xl font-bold mb-2">FactsBot</h1>
@@ -37,29 +42,27 @@ function App() {
         </div>
       </header>
 
-      <main className="container mx-auto py-12 px-4">
+      <main className="container mx-auto py-12 px-4 flex-grow">
         <div className="bg-card p-8 rounded-lg shadow-md">
           <h3 className="text-2xl font-semibold mb-6">Faktencheck für jede URL</h3>
           
           <UrlInput onSubmit={handleUrlSubmit} disabled={isAnalyzing} />
         </div>
 
-        {isAnalyzing && (
-          <div className="mt-8">
-            <AnalysisSteps steps={data.analyse.schritte} isAnalyzing={true} />
-          </div>
-        )}
+        <div className="mt-8">
+          {(isAnalyzing || showResults) && (
+            <AnalysisSteps 
+              steps={data.analyse.schritte} 
+              isAnalyzing={isAnalyzing} 
+              title="Analyseschritte" 
+            />
+          )}
+        </div>
 
         {showResults && (
           <div className="mt-8 space-y-8">
-            <div className="bg-card p-6 rounded-lg shadow">
-              <h2 className="text-xl font-semibold mb-4">Analyseergebnis für {url}</h2>
-              <p className="text-muted-foreground mb-4">{data.analyse.zusammenfassung}</p>
-              <AnalysisSteps steps={data.analyse.schritte} isAnalyzing={false} />
-            </div>
-            
             <TrustScore score={data.analyse.vertrauensbewertung} />
-
+            
             <SourceRating rating={data.analyse.quellenbewertung} />
             
             <FactsList facts={data.analyse.fakten} />
@@ -72,7 +75,7 @@ function App() {
         )}
       </main>
 
-      <footer className="border-t mt-auto">
+      <footer className="border-t w-full mt-auto">
         <div className="container mx-auto py-4 text-center text-muted-foreground">
           <p>© 2025 FactsBot - Ein KI-gestütztes Fact-Checking-Tool</p>
         </div>
