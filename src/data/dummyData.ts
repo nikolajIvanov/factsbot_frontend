@@ -3,9 +3,11 @@ export interface Quelle {
   url: string;
 }
 
+export type BelegungsStatus = 'belegt' | 'nicht_belegt' | 'falsch';
+
 export interface Fakt {
   titel: string;
-  belegt: boolean;
+  belegungsStatus: BelegungsStatus;
   erklaerung: string;
   quellen: Quelle[];
 }
@@ -123,7 +125,7 @@ const serioeseQuelle: DummyData = {
     "fakten": [
       {
         "titel": "Die globale Durchschnittstemperatur ist seit 1880 um 1,2°C gestiegen.",
-        "belegt": true,
+        "belegungsStatus": 'belegt',
         "erklaerung": "Diese Aussage wird durch wissenschaftliche Daten belegt. Mehrere unabhängige Forschungseinrichtungen haben die globale Temperaturentwicklung seit dem späten 19. Jahrhundert dokumentiert und kommen zu ähnlichen Ergebnissen.",
         "quellen": [
           {
@@ -138,7 +140,7 @@ const serioeseQuelle: DummyData = {
       },
       {
         "titel": "Der Meeresspiegel ist im 20. Jahrhundert um etwa 20 cm gestiegen.",
-        "belegt": true,
+        "belegungsStatus": 'belegt',
         "erklaerung": "Diese Aussage wird durch Langzeitmessungen und Satellitendaten bestätigt. Der Anstieg des Meeresspiegels ist eine direkte Folge der globalen Erwärmung durch das Schmelzen von Gletschern und Eisschilden sowie die thermische Ausdehnung des Meerwassers.",
         "quellen": [
           {
@@ -244,7 +246,7 @@ const wenigerVertrauenswuerdigeQuelle: DummyData = {
     "fakten": [
       {
         "titel": "Die globale Durchschnittstemperatur ist seit 1880 um 1,2°C gestiegen.",
-        "belegt": true,
+        "belegungsStatus": 'belegt',
         "erklaerung": "Diese Aussage wird durch wissenschaftliche Daten belegt. Mehrere unabhängige Forschungseinrichtungen haben die globale Temperaturentwicklung seit dem späten 19. Jahrhundert dokumentiert und kommen zu ähnlichen Ergebnissen.",
         "quellen": [
           {
@@ -255,9 +257,24 @@ const wenigerVertrauenswuerdigeQuelle: DummyData = {
       },
       {
         "titel": "Der Amazonas-Regenwald produziert 20% des weltweiten Sauerstoffs.",
-        "belegt": false,
+        "belegungsStatus": "nicht_belegt",
         "erklaerung": "Für diese Behauptung konnten keine verlässlichen wissenschaftlichen Quellen gefunden werden. Aktuelle Forschungen deuten darauf hin, dass der Beitrag des Amazonas zur globalen Sauerstoffproduktion deutlich geringer ist und die meiste Sauerstoffproduktion durch Phytoplankton in den Ozeanen erfolgt.",
         "quellen": []
+      },
+      {
+        "titel": "Die Erde ist flach.",
+        "belegungsStatus": "falsch",
+        "erklaerung": "Diese Behauptung ist wissenschaftlich widerlegt. Zahlreiche Beweise, darunter Satellitenbilder, geophysikalische Messungen und astronomische Beobachtungen, belegen eindeutig die Kugelform der Erde.",
+        "quellen": [
+          {
+            "name": "NASA Earth Observatory",
+            "url": "https://earthobservatory.nasa.gov/features/OrbitsHistory"
+          },
+          {
+            "name": "National Geographic",
+            "url": "https://www.nationalgeographic.com/science/article/earth-is-not-flat"
+          }
+        ]
       }
     ],
     "quellenbewertung": {
