@@ -20,17 +20,14 @@ const NarrativeAnalysis = ({ analysis }: NarrativeAnalysisProps) => {
   }
 
   return (
-    <div className="bg-card p-6 rounded-lg shadow h-full">
-      <h3 className="text-lg font-medium mb-4">Narrativanalyse</h3>
-      <div className="flex flex-col h-full">
-        <p className="text-sm text-muted-foreground mb-4">
-          Die Narrativanalyse untersucht, wie die Informationen präsentiert werden und welche Erzählperspektive eingenommen wird.
-        </p>
-        <div className="mt-auto">
-          <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${getResultColor()}`}>
-            {analysis.ergebnis}
-          </span>
-        </div>
+    <div className="flex flex-col">
+      <p className="text-sm text-muted-foreground mb-4">
+        Die Narrativanalyse untersucht, wie die Informationen präsentiert werden und welche Erzählperspektive eingenommen wird.
+      </p>
+      <div className="mt-auto">
+        <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${getResultColor()}`}>
+          {analysis.ergebnis}
+        </span>
       </div>
     </div>
   )

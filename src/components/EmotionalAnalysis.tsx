@@ -52,18 +52,15 @@ const EmotionalAnalysis = ({ analysis }: EmotionalAnalysisProps) => {
   }
 
   return (
-    <div className="bg-card p-6 rounded-lg shadow h-full">
-      <h3 className="text-lg font-medium mb-4">Emotionale Analyse</h3>
-      <div className="flex flex-col h-full">
-        <p className="text-sm text-muted-foreground mb-4">
-          Die emotionale Analyse bewertet die Stärke der emotionalen Sprache und Ausdrucksweise im Text.
-        </p>
-        <div className="mt-auto flex items-center gap-2">
-          <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium ${getIntensityColor()}`}>
-            {getIntensityIcon()}
-            Intensität: {analysis.intensität}
-          </span>
-        </div>
+    <div className="flex flex-col">
+      <p className="text-sm text-muted-foreground mb-4">
+        Die emotionale Analyse bewertet die Stärke der emotionalen Sprache und Ausdrucksweise im Text.
+      </p>
+      <div className="mt-auto flex items-center gap-2">
+        <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium ${getIntensityColor()}`}>
+          {getIntensityIcon()}
+          Intensität: {analysis.intensität}
+        </span>
       </div>
     </div>
   )
