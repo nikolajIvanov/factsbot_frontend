@@ -1,8 +1,9 @@
 interface TrustScoreProps {
-  score: number
+  score: number;
+  summary: string;
 }
 
-const TrustScore = ({ score }: TrustScoreProps) => {
+const TrustScore = ({ score, summary }: TrustScoreProps) => {
   // Bestimme die Farbe basierend auf dem Score
   const getScoreColor = () => {
     if (score >= 80) return 'text-green-500'
@@ -41,10 +42,9 @@ const TrustScore = ({ score }: TrustScoreProps) => {
   }
 
   return (
-    <div className="bg-card p-6 rounded-lg shadow">
-      <h3 className="text-lg font-medium mb-4">Vertrauensbewertung</h3>
-      <div className="flex items-center gap-4">
-        <div className="relative w-32 h-32">
+    <div className="flex flex-col items-center w-full max-w-3xl mx-auto">
+      <div className="flex flex-col md:flex-row items-center gap-6 mb-4 w-full">
+        <div className="relative w-36 h-36 flex-shrink-0">
           <svg viewBox="0 0 100 100" className="w-full h-full">
             {/* Hintergrundkreis mit leichter Färbung */}
             <circle
@@ -87,10 +87,10 @@ const TrustScore = ({ score }: TrustScoreProps) => {
             </text>
           </svg>
         </div>
-        <div>
-          <p className="text-xl font-semibold">{getScoreText()}</p>
-          <p className="text-sm text-muted-foreground mt-1">
-            Basierend auf der Analyse der Fakten und Quellen
+        <div className="flex-1">
+          <p className="text-2xl font-bold mb-2">{getScoreText()}</p>
+          <p className="text-gray-600">
+            {summary}
           </p>
         </div>
       </div>
