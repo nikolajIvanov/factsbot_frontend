@@ -1,0 +1,1 @@
+"""Datenmodelle für das FactsBot-System.""" 

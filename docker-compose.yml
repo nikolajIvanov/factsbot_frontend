@@ -14,4 +14,16 @@ services:
       - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
-      - WDS_SOCKET_PORT=0 
+      - WDS_SOCKET_PORT=0
+      
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: fact-checking-backend
+    ports:
+      - "8000:8000"
+    restart: always
+    # Entferne das Volume-Mapping, das die Dateien überschreibt
+    # volumes:
+    #   - ./backend:/app 
